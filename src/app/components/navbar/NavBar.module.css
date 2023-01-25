@@ -1,0 +1,27 @@
+.wrapper {
+  width: 100%;
+  background-color: var(--mid-gray);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+}
+
+.list {
+  display: flex;
+}
+
+.listItem {
+  padding: 0.6rem 0.85rem;
+  margin: 0 0.5rem;
+  color: var(--periglacial-blue);
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.listItem:hover, .listItem.selected {
+  border-bottom: 4px solid var(--pale-teal);
+  color: var(--pale-teal);
+}
+
+.link {
+  pointer-events: none;
+}
