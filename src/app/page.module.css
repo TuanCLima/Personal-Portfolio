@@ -4,4 +4,14 @@
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
+  background-color: var(--ebony-clay);
+  position: relative;
+  z-index: -1;
+}
+
+.box {
+  height: 300px;
+  width: 300px;
+  display: block;
+  background-color: blue;
 }

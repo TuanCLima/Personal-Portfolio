@@ -5,6 +5,7 @@
   --mid-gray: #525e65;
   --pale-teal: #73CCA8;
   --periglacial-blue: #DBE8D4;
+  --ebony-clay: #252B38;
 
   --max-width: 1100px;
   --border-radius: 12px;
@@ -93,13 +94,7 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  
 }
 
 a {
