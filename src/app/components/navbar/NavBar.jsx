@@ -7,6 +7,7 @@ function NavBar() {
   const listRef = useRef(null);
 
   const handleClick = (event) => {
+    console.log('###')
     event.target.parentElement.childNodes.forEach((childNode) => {
       childNode.classList.remove(styles.selected);
     })
