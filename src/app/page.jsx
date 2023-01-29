@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main id={styles.main}>
       <NavBar />
       <DrifterStarsBackGround />
       <Header />

@@ -1,14 +1,21 @@
 
 import Link from 'next/link'
 import styles from './NavBar.module.css'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import experienceStyles from '../experience/Experience.module.css';
+import academiaStyles from '../academia/Academia.module.css';
+import pageStyles from '../../page.module.css';
+
+const stylesMap = {
+  experience: experienceStyles.experience,
+  academia: academiaStyles.academia,
+  home: pageStyles.main,
+};
 
 function NavBar() {
   const navBarRef = useRef(null);
 
   const handleClick = (event) => {
-    console.log('###')
     event.target.parentElement.childNodes.forEach((childNode) => {
       childNode.classList.remove(styles.selected);
     })
@@ -17,7 +24,7 @@ function NavBar() {
 
   const scrollHandler = (e) => {
     const { bottom } = navBarRef.current.getBoundingClientRect();
-    const { top } = document.getElementById(experienceStyles[e.target.innerText.toLowerCase()]).getBoundingClientRect();
+    const { top } = document.getElementById(stylesMap[e.target.innerText.toLowerCase()]).getBoundingClientRect();
 
     const customOffset = 20;
 
