@@ -24,7 +24,7 @@ function NavBar() {
 
   const scrollHandler = (e) => {
     const { bottom } = navBarRef.current.getBoundingClientRect();
-    const { top } = document.getElementById(stylesMap[e.target.innerText.toLowerCase()]).getBoundingClientRect();
+    const { top } = document.getElementById(stylesMap[e.target.childNodes[0].innerText.toLowerCase()]).getBoundingClientRect();
 
     const customOffset = 20;
 
@@ -34,10 +34,9 @@ function NavBar() {
   return (
     <div className={styles.wrapper} ref={navBarRef}>
       <ul className={styles.list} onClick={handleClick}>
-        <li className={styles.listItem}><a onClick={scrollHandler} className={styles.link}>Home</a></li>
-        <li className={styles.listItem}><a onClick={scrollHandler} className={styles.link}>Experience</a></li>
-        <li className={styles.listItem}><a onClick={scrollHandler} className={styles.link}>Academia</a></li>
-        <li className={`${styles.listItem} ${styles.selected}`}><a onClick={scrollHandler} className={styles.link}>Experience</a></li>
+        <li className={`${styles.listItem} ${styles.selected}`} onClick={scrollHandler}><a className={styles.link}>Home</a></li>
+        <li className={styles.listItem} onClick={scrollHandler}><a className={styles.link}>Experience</a></li>
+        <li className={styles.listItem} onClick={scrollHandler}><a className={styles.link}>Academia</a></li>
       </ul>
     </div>
   )
