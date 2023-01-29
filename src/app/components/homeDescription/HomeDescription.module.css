@@ -1,0 +1,10 @@
+.wrapper {
+  width: 90%;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 28px;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}

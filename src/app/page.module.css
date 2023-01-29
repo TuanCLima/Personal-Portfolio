@@ -6,7 +6,7 @@
   min-height: 100vh;
   background-color: var(--ebony-clay);
   position: relative;
-  z-index: -1;
+  z-index: 0;
 }
 
 .box {

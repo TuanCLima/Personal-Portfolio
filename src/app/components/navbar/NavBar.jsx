@@ -1,10 +1,11 @@
 
 import Link from 'next/link'
 import styles from './NavBar.module.css'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
+import experienceStyles from '../experience/Experience.module.css';
 
 function NavBar() {
-  const listRef = useRef(null);
+  const navBarRef = useRef(null);
 
   const handleClick = (event) => {
     console.log('###')
@@ -14,13 +15,22 @@ function NavBar() {
     event.target.classList.add(styles.selected);
   }
 
+  const scrollHandler = (e) => {
+    const { bottom } = navBarRef.current.getBoundingClientRect();
+    const { top } = document.getElementById(experienceStyles[e.target.innerText.toLowerCase()]).getBoundingClientRect();
+
+    const customOffset = 20;
+
+    window.scrollTo({ top: top + window.pageYOffset - bottom - customOffset, behavior: 'smooth' })
+  };
+
   return (
-    <div className={styles.wrapper}>
-      <ul className={styles.list} ref={listRef} onClick={handleClick}>
-        <li className={styles.listItem}><Link className={styles.link} href="#">Home</Link></li>
-        <li className={styles.listItem}><Link className={styles.link} href="#">Experience</Link></li>
-        <li className={styles.listItem}><Link className={styles.link} href="#">Academia</Link></li>
-        <li className={`${styles.listItem} ${styles.selected}`}><Link className={styles.link} href="#">About</Link></li>
+    <div className={styles.wrapper} ref={navBarRef}>
+      <ul className={styles.list} onClick={handleClick}>
+        <li className={styles.listItem}><a onClick={scrollHandler} className={styles.link}>Home</a></li>
+        <li className={styles.listItem}><a onClick={scrollHandler} className={styles.link}>Experience</a></li>
+        <li className={styles.listItem}><a onClick={scrollHandler} className={styles.link}>Academia</a></li>
+        <li className={`${styles.listItem} ${styles.selected}`}><a onClick={scrollHandler} className={styles.link}>Experience</a></li>
       </ul>
     </div>
   )
