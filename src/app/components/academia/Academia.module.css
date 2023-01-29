@@ -23,12 +23,39 @@
   gap: 1rem;
 }
 
+.uspImg {
+  background-color: white;
+  border: 5px solid white;
+}
+
+.parisImg {
+  filter: brightness(1.1);
+}
+
 .item {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 1rem;
   gap: 1.75rem;
+}
+
+.imageWrapper {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  background-color: var(--ebony-clay);
+  padding: 0 40px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.imageWrapper:hover {
+  filter: brightness(1.2);
+}
+
+.imageWrapper img {
+  border-radius: 10px;
 }
 
 .description {

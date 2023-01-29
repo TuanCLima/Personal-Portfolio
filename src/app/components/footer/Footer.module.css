@@ -57,6 +57,10 @@
   font-size: 0.8rem;
 }
 
+.trademark span {
+  font-family: 'Titilium Sans', sans-serif;
+}
+
 .email {
   font-size: 0.8rem;
 }
