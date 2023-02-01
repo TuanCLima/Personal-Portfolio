@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from './Experience.module.css';
-import { useState } from "react";
+import { throttle } from "lodash";
+import { useState, useCallback } from "react";
 
 function Experience() {
   const [expandedId, setExpandedId] = useState("");
@@ -10,46 +11,46 @@ function Experience() {
       title: "Vix",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       images: [
-        "/carrousel/orange.png",
-        "/carrousel/green.png",
-        "/carrousel/purple.png",
-        "/carrousel/darkblue.png"
+        "/carrousel/cellphoneOne.png",
+        "/carrousel/desktopOne.png",
+        "/carrousel/cellphoneTwo.png",
+        "/carrousel/desktopTwo.png"
       ]
     },
     granito: {
       title: "Granito",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       images: [
-        "/carrousel/orange.png",
-        "/carrousel/green.png",
-        "/carrousel/purple.png",
-        "/carrousel/darkblue.png"
+        "/carrousel/cellphoneOne.png",
+        "/carrousel/desktopOne.png",
+        "/carrousel/cellphoneTwo.png",
+        "/carrousel/desktopTwo.png"
       ]
     },
     ateme: {
       title: "Ateme",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       images: [
-        "/carrousel/orange.png",
-        "/carrousel/green.png",
-        "/carrousel/purple.png",
-        "/carrousel/darkblue.png"
+        "/carrousel/cellphoneOne.png",
+        "/carrousel/desktopOne.png",
+        "/carrousel/cellphoneTwo.png",
+        "/carrousel/desktopTwo.png"
       ]
     }
   };
 
+  let carouselIndex = 0;
+
+  /* not finished */
   const handleDetails = (e) => {
     const detailsEl = document.getElementsByClassName(styles.jobDetails)[0];  
 
     if(expandedId !== e.target.id) {
-      // detailsEl.getElementsByTagName("h1")[0].innerText = jobData[e.target.id].title; 
-      detailsEl.style.setProperty("display", "flex");
       setExpandedId(e.target.id);
       return;
     }
 
     if(expandedId === e.target.id) {
-      detailsEl.style.setProperty("display", "none");
       setExpandedId("");
       return;
     }
@@ -57,35 +58,61 @@ function Experience() {
 
   function moveCarousel(direction) { 
     const carousel = document.getElementsByClassName(styles.carousel)[0];
-    const element = document.getElementsByClassName(styles.el)[0];
-    const carouselStyle = getComputedStyle(carousel);
-    const elementStyle = getComputedStyle(element);
-    
+    const elements = document.getElementsByClassName(styles.element);
+
+    const convertedElements = [...elements];
+
+    const elementsWidth = convertedElements.map(element => {
+      const elementStyle = getComputedStyle(element);
+      const numericWidth = parseInt(elementStyle.width.slice(0, -2));
+      return numericWidth;
+    });
+
+    const distanceFoward = (elementsWidth[carouselIndex] + (elementsWidth[carouselIndex + 1])) / 2;
+    const distanceBackward = (elementsWidth[carouselIndex] + (elementsWidth[carouselIndex - 1])) / 2;
+
+    const style = getComputedStyle(carousel);
+
     /* 12px -> 12 */
-    const position = carouselStyle.left.slice(0, -2);
-    const elementSize = elementStyle.width.slice(0, -2);
+    const leftDistance = style.left.slice(0, -2);
+
+    const numericDistance = parseInt(leftDistance);
 
     const limit = carousel.childNodes.length;
-
-    const numericSize = parseInt(elementSize);
-    const numericPosition = parseInt(position);
     
-    const canGoForward = ((numericPosition - numericSize) / numericSize) > -limit;
-    const canGoBackwards = ((numericPosition + numericSize) / numericSize <= 0);
+    const canGoForward = ((numericDistance - distanceFoward) / distanceFoward) > -limit;
+    const canGoBackwards = ((numericDistance + distanceBackward) / distanceBackward <= 0);
   
   
     if(direction === "forward" && canGoForward) {
-      carousel.style.left = (numericPosition - numericSize) + "px";
+      carouselIndex += 1;
+      carousel.style.left = (numericDistance - distanceFoward) + "px";
+
+      convertedElements.forEach((element, index) => {
+        element.classList.add(styles.unfocused);
+        if(carouselIndex === index) {
+          element.classList.remove(styles.unfocused);
+        }
+      });
       return;
     }
+
     if(direction === "backward" && canGoBackwards){
-      console.log(numericSize);
-      carousel.style.left = (numericPosition + numericSize) + "px";
+      carouselIndex -= 1;
+      carousel.style.left = (numericDistance + distanceBackward) + "px";
+
+      convertedElements.forEach((element, index) => {
+        element.classList.add(styles.unfocused);
+        if(carouselIndex === index) {
+          element.classList.remove(styles.unfocused);
+        }
+      });
       return;
     }
   }
-  
 
+  const debouncedMoveCarousel = useCallback(throttle(moveCarousel, 200), []);
+  
   return (
     <section id={styles.experience}>
       <h1 className={styles.title}>Experience</h1>
@@ -112,15 +139,18 @@ function Experience() {
         </div>
       </div>
       <div className={styles.jobDetails} id="jobDetails">
-        <button className={styles.carouselBtn} onClick={() => moveCarousel('backward')}>&#8592;</button>
-          <div className={styles.carouselWrapper}>
-            <div className={styles.carousel}>
-              <div className={`${styles.el} ${styles.one}`}></div>
-              <div className={`${styles.el} ${styles.two}`}></div>
-              <div className={`${styles.el} ${styles.three}`}></div>
-            </div>
-          </div> 
-        <button className={styles.carouselBtn} onClick={() => moveCarousel('forward')}>&#8594;</button>
+        <div className={styles.carouselWrapper}>
+          <button className={styles.carouselBtn} onClick={() => debouncedMoveCarousel('backward')}>&#8592;</button>
+            <div className={styles.carouselFocus}>
+              <div className={styles.carousel}>
+                  <Image className={`${styles.element} ${styles.landscape}`} src={'/carousel/desktopOne.jpg'} width={1000} height={1000} alt="test"></Image>
+                  <Image className={`${styles.element} ${styles.portrait} ${styles.unfocused}`} src={'/carousel/cellphoneOne.png'} width={1000} height={1000} alt="test"></Image>
+                  <Image className={`${styles.element} ${styles.landscape} ${styles.unfocused}`} src={'/carousel/desktopTwo.jpg'} width={1000} height={1000} alt="test"></Image>
+                  <Image className={`${styles.element} ${styles.portrait} ${styles.unfocused}`} src={'/carousel/cellphoneTwo.jpg'} width={1000} height={1000} alt="test"></Image>
+              </div>
+            </div> 
+          <button className={styles.carouselBtn} onClick={() => debouncedMoveCarousel('forward')}>&#8594;</button>
+        </div>
       </div>
     </section>
   );

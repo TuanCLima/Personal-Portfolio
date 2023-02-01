@@ -67,20 +67,31 @@
 }
 
 .jobDetails {
-  display: none;
-  margin-top: 3rem;
   height: 500px;
   width: 100%;
+  margin-top: 3rem;
   background-color: white;
-  padding: 2rem 5rem 0 5rem ;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
 }
 
 .jobDetails > p{
   color: black; 
+}
+
+.carouselWrapper {
+  background-color: var(--mid-gray);
+  height: 400px;
+  width: 100%;
+  padding: 0 20px 0 20px;
+  position: relative;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  transition: left 1s ease-in-out;
 }
 
 .carouselBtn {
@@ -88,6 +99,8 @@
   width: 50px;
   background-color: black;
   color: white;
+  border-radius: 10px;
+  z-index: 1;
 }
 
 .carouselBtn:hover {
@@ -95,35 +108,42 @@
   color: black;
 }
 
-.carouselWrapper {
-  height: 200px;
+.carouselFocus {
+  height: 100%;
   width: 700px;
-  overflow: hidden;
   position: relative;
+  border-radius: 0 0 20px 20px;
 }
 
 .carousel {
-  height: 200px;
+  height: 400px;
   position: absolute;
   display: flex;
   flex-direction: row;
   left: 0;
+  transition: left 0.5s ease-in-out;
 }
 
-.el {
+.elWrapper {
   height: 100%;
   width: 700px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.one {
-  background-color: #90f1ef;
+.unfocused {
+  opacity: 0.3;
+  transition: opacity 0.2s ease-in;
 }
 
-.two {
-  background-color: #ff70a6;
+.landscape {
+  height: 100%;
+  width: 700px;
 }
 
-.three {
-  background-color: #ff9770;
+.portrait {
+  height: 100%;
+  width: 250px;
 }
