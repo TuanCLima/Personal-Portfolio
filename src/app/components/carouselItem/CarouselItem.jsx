@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './CarouselItem.module.css'
 
 function CarouselItem({ onClick, data }) {
-  const { id, img, description } = data;
+  const { id, img, description, labels, date } = data;
   const { src, height, width, alt, style } = img;
 
   return (
@@ -12,11 +12,9 @@ function CarouselItem({ onClick, data }) {
       </div>
       <p className={styles.carouselDescription}>{description}</p>
       <div className={styles.labels}>
-        <div className={styles.label}>React</div>
-        <div className={styles.label}>Typescript</div>
-        <div className={styles.label}>Next.JS</div>
+        {labels.map((label) => <div key={label} className={styles.label}>{label}</div>)}
       </div>
-      <div className={styles.duration}>{"Jun 2021 - Jan 2023"}</div>
+      <div className={styles.duration}>{date}</div>
     </div>
   )
 }
