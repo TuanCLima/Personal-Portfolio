@@ -4,7 +4,7 @@ function Header () {
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>Tuan Lima</h1>
-      <h2 className={styles.subtitle}>Awesome developer and much more</h2>
+      <h2 className={styles.subtitle}>Front End Developer</h2>
     </header>
   )
 }

@@ -4,13 +4,13 @@ function HomeDescription() {
   return (
     <div className={styles.wrapper}>
       <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac varius nisi, ac consequat magna. Duis nunc ipsum, ultricies vitae.
+        {"I'm a front end developer working mostly with tools like React, Typescript and Next.js."}
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac varius nisi, ac consequat magna. Duis nunc ipsum, ultricies vitae.
+        {"I have a Master degree on Data Transport and Networking and have about 4 years' experience as a programmer and 2 as a React developer."}
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac varius nisi, ac consequat magna. Duis nunc ipsum, ultricies vitae.
+        {"I'm an Agile practitioner and believe that Unit Testing pays."}
       </p>
     </div>
   )

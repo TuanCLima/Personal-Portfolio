@@ -6,7 +6,7 @@ function Academia() {
     <section id={styles.academia}>
       <h1 className={styles.title}>Academia</h1>
       <div className={styles.divider}></div>
-      <h3 className={styles.description} >Magic, but I have the knowledge and patience required to make just about anything</h3>
+      <h3 className={styles.description} >{"Here's a list of the major academic institutions where I've studied."}</h3>
       <div className={styles.items}>
         <div className={styles.item}>
           <div className={styles.imageWrapper}>
