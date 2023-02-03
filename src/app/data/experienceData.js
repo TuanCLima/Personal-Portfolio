@@ -13,7 +13,7 @@ const experienceData = [
     date: "Dec 2019 - Jan 2021",
   },
   { id: "ibm",
-    img: { src: '/logo_ibm.png', width: 180, height: 60, alt: "IBM Logo", style: { border: "6px solid white;" } },
+    img: { src: '/logo_ibm.png', width: 180, height: 60, alt: "IBM Logo", style: { border: "6px solid white" } },
     description: " At IBM I was responsible for data handling at ETL level for TIM, one of Brazil’s largest telecom operators",
     labels: ["PL/SQL", "DataStage", "Bash"],
     date: "Jun 2018 - Nov 2019",

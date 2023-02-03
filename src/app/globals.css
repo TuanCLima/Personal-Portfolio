@@ -7,8 +7,7 @@
   --periglacial-blue: #DBE8D4;
   --ebony-clay: #252B38;
   --tuna: #2E3545;
-  --periglacial-blue: #DBE8D4;
-
+  
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -100,10 +99,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   color: var(--periglacial-blue);
-}
-
-body {
-  
 }
 
 a {

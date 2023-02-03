@@ -34,10 +34,11 @@
   height: 0px;
   width: 100%;
   margin-top: 3rem;
-  background-color: white;
+  background-color: var(--mid-gray);
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
+  align-items: center;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.1s linear;
@@ -48,10 +49,10 @@
 }
 
 .carouselWrapper {
-  background-color: var(--mid-gray);
   height: 400px;
   width: 100%;
   padding: 0 20px 0 20px;
+  background-color: var(--ebony-clay);
   position: relative;
   left: 0;
   display: flex;
@@ -64,9 +65,9 @@
 .carouselBtn {
   height: 50px;
   width: 50px;
-  background-color: black;
-  border: 2px solid white;
-  color: white;
+  background-color: var(--ebony-clay);
+  border: 2px solid var(--pale-teal);
+  color: var(--pale-teal);
   border-radius: 30px;
   z-index: 1;
   font-size: 20px;
@@ -74,14 +75,14 @@
 }
 
 .carouselBtn:hover {
-  background-color: white;
-  border: 2px solid black;
-  color: black;
+  background-color: var(--pale-teal);
+  border: 2px solid var(--ebony-clay);
+  color: var(--ebony-clay);
 }
 
 .carouselFocus {
   height: 100%;
-  width: 700px;
+  width: 0px;
   position: relative;
   border-radius: 0 0 20px 20px;
 }
@@ -95,18 +96,13 @@
   transition: left 0.5s ease-in-out;
 }
 
-.elWrapper {
-  height: 100%;
-  width: 700px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.imageBackground {
+  background-color: var(--mid-gray);
 }
 
 .opaque {
-  opacity: 0.3;
-  transition: opacity 0.2s ease-in;
+  opacity: 0.4;
+  transition: opacity 0.1s ease-in;
 }
 
 .landscape {
@@ -129,21 +125,40 @@
 }
 
 .radio {
-  height: 10px;
-  width: 10px;
+  height: 7px;
+  width: 7px;
   margin: 5px;
-  background-color: black;
+  background-color: var(--ebony-clay);
   border-radius: 5px;
 }
 
 .radio:hover {
-  background-color: #FF8A8A;
+  background-color: var(--periglacial-blue);
 }
 
 .selected {
-  background-color: red;
+  background-color: var(--pale-teal);
 }
 
 .selected:hover {
-  background-color: red;
+  background-color: var(--pale-teal);
+}
+
+.detailsText {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detailsText > p {
+  color: var(--periglacial-blue);
+  text-align: justify;
+  line-height: 30px;
+  margin: 0 0 20px 0;
+}
+
+.detailsText > h1 {
+  color: var(--pale-teal);
+  margin: 20px 0 10px 0;
 }
