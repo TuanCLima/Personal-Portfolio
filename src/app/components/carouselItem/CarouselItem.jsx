@@ -12,9 +12,9 @@ function CarouselItem({ onClick, data }) {
       </div>
       <p className={styles.carouselDescription}>{description}</p>
       <div className={styles.labels}>
-        {labels.map((label) => <div key={label} className={styles.label}>{label}</div>)}
+        {labels.map((label) => <div key={label} className={styles.label}  id={id}>{label}</div>)}
       </div>
-      <div className={styles.duration}>{date}</div>
+      <div className={styles.duration}  id={id}>{date}</div>
     </div>
   )
 }

@@ -3,11 +3,13 @@ import styles from './Experience.module.css';
 import { useState, useCallback, useEffect} from "react";
 import CarouselItem from "../carouselItem/CarouselItem";
 import experienceData from "@/app/data/experienceData";
+import carouselItemStyles from "../carouselItem/CarouselItem.module.css";
 
 const jobData = {
   vix: {
     title: "Vix",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    labels: ["React", "Typescript", "Next.js", "Dart", "Flutter", "MobX"],
     images: [
       {
         imagePath: "/carousel/cellphoneOne.png", 
@@ -30,6 +32,7 @@ const jobData = {
   granito: {
     title: "Granito",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    labels: ["Dart", "Flutter", "MobX", "PL/SQL", "DataStage", "Bash"],
     images: [
       {
         imagePath: "/carousel/desktopOne.jpg", 
@@ -52,6 +55,7 @@ const jobData = {
   ibm: {
     title: "IBM",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    labels: ["PL/SQL", "DataStage", "Bash", "React", "Typescript", "Next.js"],
     images: [
       {
         imagePath: "/carousel/cellphoneOne.png", 
@@ -73,6 +77,8 @@ const jobData = {
   }
 };
 
+const importedCarouselItemElement = carouselItemStyles.carouselItem;
+
 const changeFocusStyle = (elementsList, indexToFocus) => {
   elementsList.forEach((carouselItemWrapper, index) => {
 
@@ -91,12 +97,24 @@ function Experience() {
 
   const toggleDetails = useCallback((selectedElement) => {
     const [jobDetailsElement] = document.getElementsByClassName(styles.jobDetails); 
+    const jobItems = document.getElementsByClassName(importedCarouselItemElement);
+
+    for(let i=0; i<jobItems.length; i++) {
+      if(selectedElement.target.id === jobItems[i].id) {
+        jobItems[i].style.backgroundColor = "var(--periglacial-blue)";
+        jobItems[i].style.color = "var(--mid-gray)";
+        jobItems[i].style.border = "2px solid var(--pale-teal)";
+        continue;
+      }
+      jobItems[i].style.backgroundColor = "";
+      jobItems[i].style.color = "";
+      jobItems[i].style.border = "2px solid var(--mid-gray)";
+    }
 
     if (expandedId !== selectedElement.target.id) {
       jobDetailsElement.style.transform = "scaleY(1)";
       jobDetailsElement.style.height = "auto";
       setExpandedId(selectedElement.target.id);
-      return;
     }
 
     if (expandedId === selectedElement.target.id) {
@@ -236,6 +254,15 @@ function Experience() {
         <div className={styles.detailsText}>
           <h1>{jobData[expandedId] && jobData[expandedId].title}</h1>
           <p>{jobData[expandedId] && jobData[expandedId].desc}</p>
+        </div>
+        <div className={styles.labelsWrapper}>
+          {jobData[expandedId] && jobData[expandedId].labels.map(label => {
+            return (
+              <div className={styles.label}>
+                <h2>{label}</h2>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

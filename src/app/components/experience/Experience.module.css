@@ -33,8 +33,9 @@
 .jobDetails {
   height: 0px;
   width: 100%;
-  margin-top: 3rem;
   background-color: var(--mid-gray);
+  border-top: 3px solid var(--mid-gray);
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -161,4 +162,32 @@
 .detailsText > h1 {
   color: var(--pale-teal);
   margin: 20px 0 10px 0;
+}
+
+.labelsWrapper {
+  height: 100px;
+  width: 30%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.label {
+  height: 30px;
+  padding: 0 10px 0 10px;
+  margin: 0 10% 0 10%;
+  border-radius: 15px;
+  background-color: var(--pale-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label:hover {
+  filter: brightness(1.2);
+}
+
+.label h2{
+  font-size: 15px;
+  color: var(--ebony-clay);
 }

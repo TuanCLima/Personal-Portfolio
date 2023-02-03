@@ -33,7 +33,7 @@
 .imageWrapper:hover {
   filter: brightness(1.2);
 }
-
+  
 .imageWrapper img {
   border-radius: 10px;
 }
