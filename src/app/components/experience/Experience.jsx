@@ -100,7 +100,7 @@ function Experience() {
     const jobItems = document.getElementsByClassName(importedCarouselItemElement);
 
     for(let i=0; i<jobItems.length; i++) {
-      if(selectedElement.target.id === jobItems[i].id) {
+      if(selectedElement.target.id === jobItems[i].id && selectedElement.target.id !== expandedId) {
         jobItems[i].style.backgroundColor = "var(--periglacial-blue)";
         jobItems[i].style.color = "var(--mid-gray)";
         jobItems[i].style.border = "2px solid var(--pale-teal)";
@@ -256,9 +256,9 @@ function Experience() {
           <p>{jobData[expandedId] && jobData[expandedId].desc}</p>
         </div>
         <div className={styles.labelsWrapper}>
-          {jobData[expandedId] && jobData[expandedId].labels.map(label => {
+          {jobData[expandedId] && jobData[expandedId].labels.map((label, index) => {
             return (
-              <div className={styles.label}>
+              <div className={styles.label} key={index}>
                 <h2>{label}</h2>
               </div>
             );

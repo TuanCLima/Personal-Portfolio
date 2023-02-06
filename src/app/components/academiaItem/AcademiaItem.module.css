@@ -1,0 +1,53 @@
+.academiaItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  padding-bottom: 0.7rem;
+  border: 2px solid var(--mid-gray);
+  border-radius: 3px;
+}
+
+.academiaDescription {
+  text-align: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.academiaDescription:hover {
+  text-decoration: underline;
+}
+
+.imageWrapper {
+  height: 140px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  border-radius: 15px;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.imageWrapper:hover {
+  filter: brightness(1.2);
+}
+  
+.imageWrapper img {
+  background-color: white;
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.imageWrapper:nth-child(1) {
+  filter: brightness(1.2);
+}
+
+.duration {
+  margin-top: 20px;
+  width: 100%;
+  text-align: right;
+}
