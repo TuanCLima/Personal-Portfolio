@@ -5,6 +5,7 @@ import CarouselItem from "../carouselItem/CarouselItem";
 import experienceData from "@/app/data/experienceData";
 import carouselItemStyles from "../carouselItem/CarouselItem.module.css";
 
+/* Move this to "experienceData.js" */
 const jobData = {
   vix: {
     title: "Vix",
@@ -94,6 +95,7 @@ const changeFocusStyle = (elementsList, indexToFocus) => {
 function Experience() {
   const [expandedId, setExpandedId] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentJobIndex, setCurrentJobIndex] = useState(0);
 
   const toggleDetails = useCallback((selectedElement) => {
     const [jobDetailsElement] = document.getElementsByClassName(styles.jobDetails); 
@@ -203,47 +205,134 @@ function Experience() {
     if (currentIndex === indexToLoad) {
       return;
     }
-    const x = currentIndex < indexToLoad ? (-distanceToTranslate) : distanceToTranslate;
+    const distanceToLoad = currentIndex < indexToLoad ? (-distanceToTranslate) : distanceToTranslate;
 
     setCurrentIndex(indexToLoad);
-    carousel.style.left = (currentLeftPosition + x) + "px";
+    carousel.style.left = (currentLeftPosition + distanceToLoad) + "px";
 
     changeFocusStyle(carouselItems, indexToLoad);
   }, [currentIndex]);
 
+  const changeJobsButtonStyle = useCallback(() => {
+    const [jobs] = document.getElementsByClassName(styles.jobs);
+    const jobsButons = document.getElementsByClassName(styles.jobsBtn);
+
+    const jobsItemsLength = jobs.childNodes.length;
+
+    const backwardsBtn = jobsButons[0];
+    const forwardBtn = jobsButons[1];
+
+    const hasLeft = currentJobIndex > 0 ? true : false;
+    const hasRight = currentJobIndex < jobsItemsLength - 1 ? true : false;
+
+    if(hasLeft && hasRight) {
+      backwardsBtn.style.opacity = "1";
+      forwardBtn.style.opacity = "1";
+    }
+
+    if(!hasLeft && hasRight) {
+      backwardsBtn.style.opacity = "0";
+      forwardBtn.style.opacity = "1";
+    }
+
+    if(hasLeft && !hasRight) {
+      backwardsBtn.style.opacity = "1";
+      forwardBtn.style.opacity = "0";
+    }
+
+  }, [currentJobIndex]);
+
+  const moveJobsToIndex = (indexToLoad) => {
+    const [jobs] = document.getElementsByClassName(styles.jobs);
+    const jobsItemsQuantity = jobs.childNodes.length;
+
+
+    if(indexToLoad + 1 > jobsItemsQuantity) {
+      return;
+    }
+    if(indexToLoad < 0) {
+      return;
+    }
+
+    const distance = getDistanceToTranslateJobs();
+    moveJobs(indexToLoad, distance);
+  }
+
+  const getDistanceToTranslateJobs = useCallback(() => {
+    const [jobs] = document.getElementsByClassName(styles.jobs);
+    const jobsItems = [...jobs.childNodes];
+
+    const jobsItemsWidths = jobsItems.map(jobItem => {
+      const jobItemStyle = getComputedStyle(jobItem);
+      const jobItemWidth = parseInt(jobItemStyle.width.slice(0, -2));
+      return jobItemWidth;
+    });
+
+    let distance = 0;
+
+    distance = jobsItemsWidths[0] + 16 /* 1rem from gap*/;
+    return distance;
+
+  }, [currentJobIndex]);
+
+  const moveJobs = useCallback((indexToLoad, distanceToTranslate) => {
+    const [jobs] = document.getElementsByClassName(styles.jobs);
+    const jobsStyle = getComputedStyle(jobs);
+    const currentLeftPosition = parseInt(jobsStyle.left.slice(0, -2));
+    
+    if (currentJobIndex === indexToLoad) {
+      return;
+    }
+    const distanceToLoad = currentJobIndex < indexToLoad ? (-distanceToTranslate) : distanceToTranslate;
+    setCurrentJobIndex(indexToLoad);
+    jobs.style.left = (currentLeftPosition + distanceToLoad) + "px";
+  }, [currentJobIndex]);
+
   useEffect(() => {
-    if (jobData[expandedId] && jobData[expandedId]?.images[0].imageClass === styles.portrait) {
+    const [landscape] = document.getElementsByClassName(styles.landscape);
+    const landscapeWidth = landscape === undefined ? 700 : parseInt(getComputedStyle(landscape).width.slice(0, -2));
+
+    if (jobData[expandedId]?.images[0].imageClass === styles.portrait) {
       resetCarousel(250);
       return;
     }
-    resetCarousel(700);
+    resetCarousel(landscapeWidth);
   }, [expandedId]);
+
+  useEffect(() => {
+    changeJobsButtonStyle();
+  }, [currentJobIndex]);
 
   return (
     <section id={styles.experience}>
       <h1 className={styles.title}>Experience</h1>
       <div className={styles.divider}></div>
       <h3 className={styles.description} >{"Here is a brief description of the work I've been involved with throughout the last few years."}</h3>
-      <div className={styles.jobs}>
-        {experienceData.map((experienceItem) => (
-          <CarouselItem key={experienceItem.id} onClick={toggleDetails} data={experienceItem} />
-        ))}
+      <div className={styles.jobsWrapper}>
+        <button className={styles.jobsBtn} onClick={() => moveJobsToIndex(currentJobIndex - 1)}>&#8592;</button>
+        <div className={styles.jobsFocus}>
+          <div className={styles.jobs}>
+              {experienceData.map((experienceItem) => (
+                <CarouselItem key={experienceItem.id} onClick={toggleDetails} data={experienceItem} />
+              ))}
+          </div>
+        </div>
+        <button className={styles.jobsBtn} onClick={() =>moveJobsToIndex(currentJobIndex + 1)}>&#8594;</button>
       </div>
       <div className={styles.jobDetails} id="jobDetails">
         <div className={styles.carouselWrapper}>
           <button className={styles.carouselBtn} onClick={() => moveToPositionFromIndex(currentIndex - 1)}>&#8592;</button>
-            <div className={styles.carouselFocus}>
-              <div className={styles.carousel}>
-                  {jobData[expandedId] && jobData[expandedId].images.map((image, index) => {
-                    return (
-                      <div className={styles.imageBackground} key={index}>
-                        <Image className={`${image.imageClass} ${index !== 0 ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="test"></Image>
-                      </div>
-                    );
-                  }
-                  )}
-              </div>
-            </div> 
+          <div className={styles.carouselFocus}>
+            <div className={styles.carousel}>
+                {jobData[expandedId] && jobData[expandedId].images.map((image, index) => {
+                  return (
+                    <div className={styles.imageBackground} key={index}>
+                      <Image className={`${image.imageClass} ${index !== 0 ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="test"></Image>
+                    </div>
+                  );
+                })}
+            </div>
+          </div> 
           <button className={styles.carouselBtn} onClick={() => moveToPositionFromIndex(currentIndex + 1)}>&#8594;</button>
         </div>
         <div className={styles.radioWrapper}>

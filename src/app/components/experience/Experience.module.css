@@ -17,10 +17,32 @@
   font-size: 2.5rem;
 }
 
+.jobsWrapper {
+  width: 100vw;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.jobsBtn {
+  display: none;
+}
+
+.jobsFocus {
+  height: 300px;
+  width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .jobs {
+  position: absolute;
   display: flex;
   gap: 1rem;
-  padding: 0 1rem;
 }
 
 .description {
@@ -50,21 +72,19 @@
 
 .carouselWrapper {
   height: 400px;
-  width: 100%;
-  padding: 0 20px 0 20px;
+  width: 100vw;
   background-color: var(--ebony-clay);
   position: relative;
-  left: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  transition: left 1s ease-in-out;
+  justify-content: center;
 }
 
 .carouselBtn {
   height: 50px;
   width: 50px;
+  position: absolute;
   background-color: var(--ebony-clay);
   border: 2px solid var(--pale-teal);
   color: var(--pale-teal);
@@ -72,6 +92,14 @@
   z-index: 1;
   font-size: 20px;
   font-weight: 400;
+}
+
+.carouselBtn:nth-child(1) {
+  left: 20px;
+}
+
+.carouselBtn:nth-child(3) {
+  right: 20px;
 }
 
 .carouselBtn:hover {
@@ -106,12 +134,12 @@
 }
 
 .landscape {
-  height: 100%;
+  height: 400px;
   width: 700px;
 }
 
 .portrait {
-  height: 100%;
+  height: 400px;
   width: 250px;
 }
 
@@ -189,4 +217,77 @@
 .label h2{
   font-size: 15px;
   color: var(--ebony-clay);
+}
+
+@media screen and (max-width: 640px) {
+  .jobsWrapper {
+    padding: 0 50px;
+  }
+
+  .jobs {
+    left: 0px;
+    transition: left 0.5s ease-in-out;
+  }
+
+  .jobsFocus {
+    justify-content: center;
+  }
+
+  .jobsBtn {
+    display: block;
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    z-index: 1;
+    position: absolute;
+    background-color: var(--ebony-clay);
+    border: 2px solid var(--pale-teal);
+    color: var(--pale-teal);
+    font-size: 15px;
+    font-weight: 200;
+  }
+
+  .jobsBtn:nth-child(1) {
+    left: 10px;
+  }
+
+  .jobsBtn:nth-child(3) {
+    right: 10px;
+  }
+
+  .carouselWrapper {
+    height: 310px;
+    justify-content: flex-start;
+  }
+
+  .carousel {
+    height: 310px;
+  }
+
+  .imageBackground {
+    background-color: var(--ebony-clay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .landscape {
+    height: 310px;
+    width: 100vw;
+  }
+
+  .portrait {
+    width: 200px;
+    height: 310px;
+  }
+
+  .detailsText {
+    width: 60%;
+  }
+
+  .labelsWrapper {
+    height: 100px;
+    width: 60%;
+  }
 }
