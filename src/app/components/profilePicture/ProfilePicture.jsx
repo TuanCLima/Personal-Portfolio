@@ -10,9 +10,6 @@ function ProfilePicture () {
     const frontEl = e.target;
     const backEl = e.target.parentElement.childNodes[isFront ? 1 : 0];
 
-    console.log('###', frontEl.src, backEl.src);
-
-
     frontEl.classList.remove(styles.animationShow);
     frontEl.classList.add(styles.animationHide);
 

@@ -101,7 +101,7 @@ function Experience() {
     const [jobDetailsElement] = document.getElementsByClassName(styles.jobDetails); 
     const jobItems = document.getElementsByClassName(importedCarouselItemElement);
 
-    for(let i=0; i<jobItems.length; i++) {
+    for (let i=0; i<jobItems.length; i++) {
       if(selectedElement.target.id === jobItems[i].id && selectedElement.target.id !== expandedId) {
         jobItems[i].style.backgroundColor = "var(--periglacial-blue)";
         jobItems[i].style.color = "var(--mid-gray)";
@@ -126,7 +126,7 @@ function Experience() {
     }
   }, [expandedId]);
 
-  const resetCarousel = (newFocusSize) => {
+  const resetCarousel = useCallback((newFocusSize) => {
     const [carousel] = document.getElementsByClassName(styles.carousel);
     const [carouselFocus] = document.getElementsByClassName(styles.carouselFocus);
 
@@ -136,7 +136,7 @@ function Experience() {
     changeFocusStyle(carousel.childNodes, 0);
     toggleRadio(0);
     setCurrentIndex(0);
-  }
+  }, [])
 
   const moveToPositionFromIndex = (indexToLoad) => {
     const [carousel] = document.getElementsByClassName(styles.carousel);
@@ -273,7 +273,7 @@ function Experience() {
     distance = jobsItemsWidths[0] + 16 /* 1rem from gap*/;
     return distance;
 
-  }, [currentJobIndex]);
+  }, []);
 
   const moveJobs = useCallback((indexToLoad, distanceToTranslate) => {
     const [jobs] = document.getElementsByClassName(styles.jobs);
@@ -297,11 +297,11 @@ function Experience() {
       return;
     }
     resetCarousel(landscapeWidth);
-  }, [expandedId]);
+  }, [expandedId, resetCarousel]);
 
   useEffect(() => {
     changeJobsButtonStyle();
-  }, [currentJobIndex]);
+  }, [currentJobIndex, changeJobsButtonStyle]);
 
   return (
     <section id={styles.experience}>

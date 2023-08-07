@@ -71,9 +71,9 @@ function Academia() {
           <p>{academicData[expandedId] && academicData[expandedId].desc}</p>
         </div>
         <div className={styles.labelsWrapper}>
-          {academicData[expandedId] && academicData[expandedId].labels.map(label => {
+          {academicData[expandedId] && academicData[expandedId].labels.map((label, index) => {
             return (
-              <div className={styles.label}>
+              <div className={styles.label} key={index}>
                 <h2>{label}</h2>
               </div>
             );
