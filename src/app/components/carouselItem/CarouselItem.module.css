@@ -1,12 +1,12 @@
 .carouselItem {
-  height: 300px;
-  width: 400px;
+  max-width: 25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 1rem;
   border: 2px solid var(--mid-gray);
   border-radius: 3px;
+  padding-bottom: 0.7rem;
 }
 
 .carouselDescription {
@@ -28,7 +28,6 @@
   border-radius: 15px;
   cursor: pointer;
   pointer-events: none;
-  /* outline: 1px solid orange; */
 }
 
 .imageWrapper:hover {
@@ -50,7 +49,7 @@
 .label {
   background-color: var(--pale-teal);
   border-radius: 10px;
-  padding: 0.2rem 0.4rem;
+  padding: 0.4rem 0.6rem 0.2rem;
 }
 
 .duration {

@@ -333,7 +333,7 @@ function Experience() {
                 {jobData[expandedId] && jobData[expandedId].images.map((image, index) => {
                   return (
                     <div className={styles.imageBackground} key={index}>
-                      <Image className={`${image.imageClass} ${index !== 0 ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="test"></Image>
+                      <Image className={`${image.imageClass} ${index !== 0 ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="Brackground Image"></Image>
                     </div>
                   );
                 })}

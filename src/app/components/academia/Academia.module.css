@@ -36,6 +36,7 @@
   background-color: var(--mid-gray);
   border-top: 3px solid var(--mid-gray);
   margin-top: 20px;
+  padding: 1rem 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
