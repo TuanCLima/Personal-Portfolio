@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from './Experience.module.css';
-import { useState, useCallback, useEffect} from "react";
+import { useState, useCallback, useEffect, useRef} from "react";
 import CarouselItem from "../carouselItem/CarouselItem";
 import experienceData from "@/app/data/experienceData";
 import carouselItemStyles from "../carouselItem/CarouselItem.module.css";
@@ -303,6 +303,12 @@ function Experience() {
     changeJobsButtonStyle();
   }, [currentJobIndex, changeJobsButtonStyle]);
 
+  
+  const carouselLengthRef = useRef();
+  useEffect(() => {
+    carouselLengthRef.current = document.getElementsByClassName(styles.carousel)[0]?.childNodes.length;
+  }, []);
+
   return (
     <section id={styles.experience}>
       <h1 className={styles.title}>Experience</h1>
@@ -336,7 +342,7 @@ function Experience() {
           <button className={styles.carouselBtn} onClick={() => moveToPositionFromIndex(currentIndex + 1)}>&#8594;</button>
         </div>
         <div className={styles.radioWrapper}>
-          {new Array(document.getElementsByClassName(styles.carousel)[0]?.childNodes.length || 4).fill(0).map((_, index) => {
+          {new Array(carouselLengthRef.current || 4).fill(0).map((_, index) => {
             return <div className={`${styles.radio} ${index === 0 ? styles.selected : ""}`} onClick={() => moveToPositionFromIndex(index)} key={index}></div>}
           )}
         </div>
