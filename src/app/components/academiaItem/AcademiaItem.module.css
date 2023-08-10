@@ -6,6 +6,7 @@
   border: 2px solid var(--mid-gray);
   border-radius: 3px;
   max-width: 25rem;
+  cursor: pointer;
 }
 
 .academiaDescription {
