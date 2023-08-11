@@ -24,6 +24,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
 }
 
 .jobsBtn {
@@ -176,7 +177,7 @@
 }
 
 .detailsText {
-  width: 30%;
+  width: 70% !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,7 +226,7 @@
 
 @media screen and (max-width: 640px) {
   .jobsWrapper {
-    padding: 0 50px;
+    padding: 0;
   }
 
   .jobs {
@@ -253,10 +254,12 @@
 
   .jobsBtn:nth-child(1) {
     left: 10px;
+    top: 50px;
   }
 
   .jobsBtn:nth-child(3) {
     right: 10px;
+    top: 50px;
   }
 
   .carouselWrapper {
@@ -292,6 +295,18 @@
 
   .labelsWrapper {
     height: 100px;
-    width: 60%;
+    width: 80%;
+  }
+
+  .label {
+    margin: 0 3px;
+  }
+
+  .jobDetails {
+    width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
   }
 }
