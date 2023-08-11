@@ -22,12 +22,6 @@
   display: flex;
   gap: 1rem;
   padding: 0 1rem;
-  /* padding: 0 15vw;
-  overflow-x: scroll;
-  will-change: transform;
-  user-select: none;
-  transition: all 0.2s;
-  width: 100vw; */
 }
 
 .description {
@@ -194,7 +188,7 @@
   filter: brightness(1.2);
 }
 
-.label h2{
+.label h2 {
   font-size: 15px;
   color: var(--ebony-clay);
 }
