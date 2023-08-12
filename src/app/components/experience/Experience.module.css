@@ -45,6 +45,11 @@
   position: absolute;
   display: flex;
   gap: 1rem;
+  max-width: 80vw;
+  overflow-x: scroll;
+  user-select: none;
+  will-change: transform;
+  transition: all 0.2s;
 }
 
 .description {
@@ -143,7 +148,9 @@
 
 .portrait {
   height: 400px;
-  width: 250px;
+  width: 245px;
+  padding: 0 1rem;
+  background-color: var(--ebony-clay);
 }
 
 .radioWrapper {
@@ -204,7 +211,7 @@
 }
 
 .label {
-  height: 30px;
+  max-height: 32px;
   padding: 2px 10px 0;
   margin: 0 10% 0 10%;
   border-radius: 15px;
@@ -222,6 +229,7 @@
   font-size: 15px;
   color: var(--mid-gray);
   font-weight: 600;
+  text-align: center;
 }
 
 @media screen and (max-width: 640px) {
@@ -232,6 +240,10 @@
   .jobs {
     left: 0px;
     transition: left 0.5s ease-in-out;
+
+    max-width: 100vw;
+    overflow-x: inherit;
+    user-select: inherit;
   }
 
   .jobsFocus {
@@ -301,6 +313,11 @@
   .label {
     margin: 0 3px;
   }
+
+  .label h2 {
+    font-size: 12px;
+  }
+
 
   .jobDetails {
     width: 100vw;

@@ -7,48 +7,67 @@ import carouselItemStyles from "../carouselItem/CarouselItem.module.css";
 
 /* Move this to "experienceData.js" */
 const jobData = {
+  aeon: {
+    title: "Aeon Research",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    labels: ["Dart", "Flutter", "Firebase", "Riverpod", "FFmpeg"],
+    images: [
+      {
+        imagePath: "/carousel/tellers_dashboard.png", 
+        imageClass: styles.landscape
+      },
+      {
+        imagePath: "/carousel/tellers_video_generation.png", 
+        imageClass: styles.landscape
+      },
+      {
+        imagePath: "/carousel/tellers_article_generation.png", 
+        imageClass: styles.landscape
+      },
+    ]
+  },
   vix: {
     title: "Vix",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    labels: ["React", "Typescript", "Next.js", "Dart", "Flutter", "MobX"],
+    labels: ["React", "Typescript", "Next.js", "Styled Comp.", "Jest"],
     images: [
       {
-        imagePath: "/carousel/cellphoneOne.png", 
-        imageClass: styles.portrait
-      },
-      {
-        imagePath: "/carousel/desktopOne.jpg", 
+        imagePath: "/carousel/vix_1.png", 
         imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/cellphoneTwo.jpg", 
-        imageClass: styles.portrait
+        imagePath: "/carousel/vix_2.png", 
+        imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/desktopTwo.jpg",
+        imagePath: "/carousel/vix_3.png", 
         imageClass: styles.landscape
-      }
+      },
     ]
   },
   granito: {
     title: "Granito",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    labels: ["Dart", "Flutter", "MobX", "PL/SQL", "DataStage", "Bash"],
+    labels: ["Dart", "Flutter", "MobX"],
     images: [
       {
-        imagePath: "/carousel/desktopOne.jpg", 
-        imageClass: styles.landscape
-      },
-      {
-        imagePath: "/carousel/desktopTwo.jpg",
-        imageClass: styles.landscape
-      },
-      {
-        imagePath: "/carousel/cellphoneOne.png", 
+        imagePath: "/carousel/granito_1.png", 
         imageClass: styles.portrait
       },
       {
-        imagePath: "/carousel/cellphoneTwo.jpg", 
+        imagePath: "/carousel/granito_2.png",
+        imageClass: styles.portrait
+      },
+      {
+        imagePath: "/carousel/granito_3.png", 
+        imageClass: styles.portrait
+      },
+      {
+        imagePath: "/carousel/granito_4.png", 
+        imageClass: styles.portrait
+      },
+      {
+        imagePath: "/carousel/granito_5.png", 
         imageClass: styles.portrait
       }
     ]
@@ -56,25 +75,7 @@ const jobData = {
   ibm: {
     title: "IBM",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    labels: ["PL/SQL", "DataStage", "Bash", "React", "Typescript", "Next.js"],
-    images: [
-      {
-        imagePath: "/carousel/cellphoneOne.png", 
-        imageClass: styles.portrait
-      },
-      {
-        imagePath: "/carousel/cellphoneTwo.jpg", 
-        imageClass: styles.portrait
-      },
-      {
-        imagePath: "/carousel/desktopOne.jpg", 
-        imageClass: styles.landscape
-      },
-      {
-        imagePath: "/carousel/desktopTwo.jpg",
-        imageClass: styles.landscape
-      }
-    ]
+    labels: ["PL/SQL", "DataStage", "Bash", "SQL"],
   }
 };
 
@@ -101,8 +102,8 @@ function Experience() {
     const [jobDetailsElement] = document.getElementsByClassName(styles.jobDetails); 
     const jobItems = document.getElementsByClassName(importedCarouselItemElement);
 
-    for (let i=0; i<jobItems.length; i++) {
-      if(selectedElement.target.id === jobItems[i].id && selectedElement.target.id !== expandedId) {
+    for (let i=0; i < jobItems.length; i++) {
+      if (selectedElement.target.id === jobItems[i].id && selectedElement.target.id !== expandedId) {
         jobItems[i].style.backgroundColor = "var(--periglacial-blue)";
         jobItems[i].style.color = "var(--mid-gray)";
         jobItems[i].style.border = "2px solid var(--pale-teal)";
@@ -129,6 +130,10 @@ function Experience() {
   const resetCarousel = useCallback((newFocusSize) => {
     const [carousel] = document.getElementsByClassName(styles.carousel);
     const [carouselFocus] = document.getElementsByClassName(styles.carouselFocus);
+
+    if (!carousel || !carouselFocus) {
+      return;
+    }
 
     carousel.style.left = "0px";
     carouselFocus.style.width = newFocusSize + "px";
@@ -292,7 +297,7 @@ function Experience() {
     const [landscape] = document.getElementsByClassName(styles.landscape);
     const landscapeWidth = landscape === undefined ? 700 : parseInt(getComputedStyle(landscape).width.slice(0, -2));
 
-    if (jobData[expandedId]?.images[0].imageClass === styles.portrait) {
+    if (jobData[expandedId]?.images?.[0].imageClass === styles.portrait) {
       resetCarousel(250);
       return;
     }
@@ -304,10 +309,10 @@ function Experience() {
   }, [currentJobIndex, changeJobsButtonStyle]);
 
   
-  const carouselLengthRef = useRef();
+  const [carouselLength, setCarouselLength] = useState();
   useEffect(() => {
-    carouselLengthRef.current = document.getElementsByClassName(styles.carousel)[0]?.childNodes.length;
-  }, []);
+    setCarouselLength(document.getElementsByClassName(styles.carousel)[0]?.childNodes.length);
+  }, [carouselLength, expandedId]);
 
   return (
     <section id={styles.experience}>
@@ -326,7 +331,7 @@ function Experience() {
         <button className={styles.jobsBtn} onClick={() =>moveJobsToIndex(currentJobIndex + 1)}>&#8594;</button>
       </div>
       <div className={styles.jobDetails} id="jobDetails">
-        <div className={styles.carouselWrapper}>
+      {jobData[expandedId] && jobData[expandedId].images  && <div className={styles.carouselWrapper}>
           <button className={styles.carouselBtn} onClick={() => moveToPositionFromIndex(currentIndex - 1)}>&#8592;</button>
           <div className={styles.carouselFocus}>
             <div className={styles.carousel}>
@@ -340,9 +345,9 @@ function Experience() {
             </div>
           </div> 
           <button className={styles.carouselBtn} onClick={() => moveToPositionFromIndex(currentIndex + 1)}>&#8594;</button>
-        </div>
+        </div>}
         <div className={styles.radioWrapper}>
-          {new Array(carouselLengthRef.current || 4).fill(0).map((_, index) => {
+          {new Array(carouselLength || 4).fill(0).map((_, index) => {
             return <div className={`${styles.radio} ${index === 0 ? styles.selected : ""}`} onClick={() => moveToPositionFromIndex(index)} key={index}></div>}
           )}
         </div>
