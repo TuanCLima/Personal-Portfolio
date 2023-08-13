@@ -7,18 +7,18 @@ import academiaItemStyles from "../academiaItem/AcademiaItem.module.css";
 const academicData = {
   saclay: {
     title: "Saclay",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    labels: [],
+    desc: "At Paris-Saclay, I got my Master’s degree on multimedia networking, meaning a Master's focused on the transport of larges amount of multimedia data over the network with very demanding constraints of reliability and latency. Study subjects important here were data compression, network performance, information theory and programming.",
+    labels: ["CDNs (arch. and caching)", 'DRM', "Audio/Video Transport", "Information Theory", "Cryptography", "Data Compression (MPEG-X, H.26X)", "Adaptive Streaming (DASH, HLS, ABR)"],
   },
   telecom: {
     title: "Telecom",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    labels: [],
+    desc: "At Telecom, I graduated as a telecom engineer, specializing in computer networks. Here, I had the opportunity to deepen my knowledge of computer networks, as well as study new interesting things like information theory, computer programming and optimization theory.",
+    labels: ["IP Networks", "Cellular Networks (2-4 G)", "Signaling and Multimedia", "Internet Application", "Telephony", "Digital Communications", "Source Coding", "Optimization"],
   },
   usp: {
     title: "USP",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    labels: [],
+    desc: "At the University of São Paulo (USP), I graduated as a telecommunications engineer. Here, besides having a strong mathematical background, I studied things like computer networks, computer processors, electronics etc.",
+    labels: ["Digital Systems", "Fiber Optics", "Computer Organization", "Microprocessors", "Digital Processing", "Control Principles", "Wireless Communications"],
   }
 };
 
@@ -59,7 +59,7 @@ function Academia() {
     <section id={styles.academia}>
       <h1 className={styles.title}>Academia</h1>
       <div className={styles.divider}></div>
-      <h3 className={styles.description} >{"Here is a brief description of the work I've been involved with throughout the last few years."}</h3>
+      <h3 className={styles.description} >{"Here is a brief description of my academic background."}</h3>
       <div className={styles.institutions}>
         {academiaData.map((academiaItem) => (
           <AcademiaItem key={academiaItem.id} onClick={toggleDetails} data={academiaItem} />
@@ -70,14 +70,31 @@ function Academia() {
           <h1>{academicData[expandedId] && academicData[expandedId].title}</h1>
           <p>{academicData[expandedId] && academicData[expandedId].desc}</p>
         </div>
+        <div className={styles.scrollArea}>
         <div className={styles.labelsWrapper}>
           {academicData[expandedId] && academicData[expandedId].labels.map((label, index) => {
+            if (index < academicData[expandedId].labels.length / 2) {
+              return ;
+            }
             return (
               <div className={styles.label} key={index}>
                 <h2>{label}</h2>
               </div>
             );
           })}
+        </div>
+        <div className={styles.labelsWrapper}>
+          {academicData[expandedId] && academicData[expandedId].labels.map((label, index) => {
+            if (index >= academicData[expandedId].labels.length / 2) {
+              return;
+            }
+            return (
+              <div className={styles.label} key={index}>
+                <h2>{label}</h2>
+              </div>
+            );
+          })}
+        </div>
         </div>
       </div>
     </section>

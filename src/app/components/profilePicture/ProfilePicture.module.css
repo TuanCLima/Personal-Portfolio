@@ -1,9 +1,17 @@
 .wrapper {
   position: relative;
   margin: 2.5rem;
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .front {
+  position: absolute;
+  left: -0px;
+  top:25px;
+  transform: scale(1.6);
   
 }
 
@@ -11,7 +19,6 @@
   position: absolute;
   left: 0;
   border: 1px solid green;
-  /* transform: rotateY(90deg); */
 }
 
 .animationHide {

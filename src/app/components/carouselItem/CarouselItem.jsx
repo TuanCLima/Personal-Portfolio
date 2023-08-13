@@ -10,7 +10,7 @@ function CarouselItem({ onClick, data }) {
       <div className={styles.imageWrapper}>
         <Image src={src} width={width} height={height} alt={alt} style={style}/>
       </div>
-      <p className={styles.carouselDescription}>{description}</p>
+      <p className={styles.carouselDescription} dangerouslySetInnerHTML={{ __html: description }}></p>
       <div className={styles.labels}>
         {labels.map((label) => <div key={label} className={styles.label}  id={id}>{label}</div>)}
       </div>

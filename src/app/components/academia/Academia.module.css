@@ -36,7 +36,7 @@
   background-color: var(--mid-gray);
   border-top: 3px solid var(--mid-gray);
   margin-top: 20px;
-  padding: 1rem 0 0.5rem;
+  padding: 1rem 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -165,18 +165,25 @@
   margin: 20px 0 10px 0;
 }
 
+.scrollArea {
+  overflow-x: scroll;
+  max-width: 30%;
+}
+
 .labelsWrapper {
   height: auto;
   width: 30%;
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 30%;
+  margin-top: 10px;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
 }
 
 .label {
   height: 30px;
-  padding: 0 10px 0 10px;
-  margin: 0 10% 0 10%;
+  width: fit-content;
+  padding: 15px 10px;
   border-radius: 15px;
   background-color: var(--pale-teal);
   display: flex;
@@ -189,8 +196,11 @@
 }
 
 .label h2 {
+  display: flex;
   font-size: 15px;
   color: var(--ebony-clay);
+  width: max-content;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 640px) {
@@ -205,6 +215,15 @@
 
   .detailsText {
     min-width: 12rem;
-    width: 13rem;
+    width: 35%;
+  }
+
+  .scrollArea {
+    max-width: 35%;
+  }
+  
+  .labelsWrapper {
+    width: 35%;
+    max-width: 35%;
   }
 }

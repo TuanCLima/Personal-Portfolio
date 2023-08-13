@@ -9,7 +9,7 @@ import carouselItemStyles from "../carouselItem/CarouselItem.module.css";
 const jobData = {
   aeon: {
     title: "Aeon Research",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    desc: "At Aeon Research, an AI French startup, I worked as a cross-platform (web and macOS) frontend developer. As a senior dev and temporarily tech lead of the fronend project, I helped develop a very modular, secure and clean architecture based app. Features implemented were a service that allowed the generation of ChatGPT-like texts for journalists based on user fed text prompts and a page that allowed the generation and smart edition of video based on text prompts.",
     labels: ["Dart", "Flutter", "Firebase", "Riverpod", "FFmpeg"],
     images: [
       {
@@ -28,8 +28,8 @@ const jobData = {
   },
   vix: {
     title: "Vix",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    labels: ["React", "Typescript", "Next.js", "Styled Comp.", "Jest"],
+    desc: "I worked at VIX as a React frontend developer, helping build from scratch the streaming platform available at <a href='https://vix.com'>vix.com</a>. I worked on a subteam specialized on the video subrepo, where I concerned myself with features like player wrapping, dependency injection, and various player functionalities like play/pause, seek, full screen, close captioning, casting, analytics, advertising. <br/> <br/> Broadly, I've also helped to implement their subscription flow, as well as VIX's authentication and authorization processes.",
+    labels: ["React", "Typescript", "Next.js", "Styled Comp.", "Jest", "GraphQL"],
     images: [
       {
         imagePath: "/carousel/vix_1.png", 
@@ -47,7 +47,7 @@ const jobData = {
   },
   granito: {
     title: "Granito",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    desc: "At Granito, a Brazilian startup of the financial sector, I worked as a mobile frontend developer, building along with two other devs the app available <a target='_blank' href='https://rb.gy/colsux'>here</a>. Within an agile based mindset and with the help of a design team, we built from scratch features like a transactions summary screen, login screen, transactions operations like division, transference and request of receipt, and other features like tap-on-phone (a very modern feature allowing the usage of a cellphone as a credit card).",
     labels: ["Dart", "Flutter", "MobX"],
     images: [
       {
@@ -74,7 +74,7 @@ const jobData = {
   },
   ibm: {
     title: "IBM",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    desc: "At IBM, I worked on the backend side of a company department concerned with the payment of commissions to third party entities called Points-of-Sale. The data would come in as raw text and would be extracted, transformed and loaded (ETL) into the insights and information required to make the payments of associated businesses. <br/><br/> My tasks would involve the handling, validation and backup of remote in-server files, writing of SQL queries that matched the needs of the required data operation, designing of DataStage projects that put in practice all the business rules involved, and final validation of the results.",
     labels: ["PL/SQL", "DataStage", "Bash", "SQL"],
   }
 };
@@ -346,14 +346,14 @@ function Experience() {
           </div> 
           <button className={styles.carouselBtn} onClick={() => moveToPositionFromIndex(currentIndex + 1)}>&#8594;</button>
         </div>}
-        <div className={styles.radioWrapper}>
-          {new Array(carouselLength || 4).fill(0).map((_, index) => {
+        {carouselLength && <div className={styles.radioWrapper}>
+          {new Array(carouselLength).fill(0).map((_, index) => {
             return <div className={`${styles.radio} ${index === 0 ? styles.selected : ""}`} onClick={() => moveToPositionFromIndex(index)} key={index}></div>}
           )}
-        </div>
+        </div>}
         <div className={styles.detailsText}>
           <h1>{jobData[expandedId] && jobData[expandedId].title}</h1>
-          <p>{jobData[expandedId] && jobData[expandedId].desc}</p>
+          <p dangerouslySetInnerHTML={{ __html: jobData[expandedId] && jobData[expandedId].desc}}></p>
         </div>
         <div className={styles.labelsWrapper}>
           {jobData[expandedId] && jobData[expandedId].labels.map((label, index) => {

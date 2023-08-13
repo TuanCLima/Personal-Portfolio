@@ -28,7 +28,7 @@ function ProfilePicture () {
 
   return (
     <div className={styles.wrapper}>
-      <Image /* onClick={onClickHandler} */ className={styles.front}  src={'/avatar1.png'} alt='Avatar Image' width={100} height={100} />
+      <Image /* onClick={onClickHandler} */ className={styles.front}  src={'/foto-3x4.jpeg'} alt='Avatar Image' width={100} height={100} />
       {/* <Image ref={ref} onClick={onClickHandler} className={styles.back} src={'/avatar2.png'} alt='Avatar Image' width={100} height={100} /> */}
     </div>
   );

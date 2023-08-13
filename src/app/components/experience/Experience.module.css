@@ -202,6 +202,10 @@
   margin: 20px 0 10px 0;
 }
 
+.detailsText a {
+  text-decoration: underline;
+}
+
 .labelsWrapper {
   height: 100px;
   width: 30%;
