@@ -168,6 +168,7 @@
 .scrollArea {
   overflow-x: scroll;
   max-width: 30%;
+  padding-bottom: 1rem;
 }
 
 .labelsWrapper {
