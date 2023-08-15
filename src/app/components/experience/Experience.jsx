@@ -86,9 +86,9 @@ const changeFocusStyle = (elementsList, indexToFocus) => {
 
     const [carouselItem] = carouselItemWrapper.childNodes;
 
-    carouselItem.classList.add(styles.opaque);
-    if(indexToFocus === index) {
-      carouselItem.classList.remove(styles.opaque);
+    carouselItem.classList?.add(styles.opaque);
+    if (indexToFocus === index) {
+      carouselItem.classList?.remove(styles.opaque);
     }
   });
 }

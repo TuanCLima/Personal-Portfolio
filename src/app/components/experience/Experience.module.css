@@ -90,8 +90,8 @@
 }
 
 .carouselBtn {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   position: absolute;
   background-color: var(--ebony-clay);
   border: 2px solid var(--pale-teal);
@@ -134,6 +134,12 @@
 
 .imageBackground {
   background-color: var(--mid-gray);
+  position: relative;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
 }
 
 .opaque {
@@ -264,8 +270,14 @@
     background-color: var(--ebony-clay);
     border: 2px solid var(--pale-teal);
     color: var(--pale-teal);
-    font-size: 15px;
     font-weight: 200;
+  }
+
+  @media (orientation: portrait) {
+    .jobsBtn, .carouselBtn {
+      font-size: 21px;
+      padding-bottom: 7px;
+    }
   }
 
   .jobsBtn:nth-child(1) {
