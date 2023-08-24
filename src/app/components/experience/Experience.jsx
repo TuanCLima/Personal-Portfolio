@@ -33,15 +33,15 @@ const jobData = {
     labels: ["React", "Typescript", "Next.js", "Styled Comp.", "Jest", "GraphQL"],
     images: [
       {
-        imagePath: "/carousel/vix_1.png", 
+        imagePath: "/carousel/vix_1_r.png", 
         imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/vix_2.png", 
+        imagePath: "/carousel/vix_2_r.png", 
         imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/vix_3.png", 
+        imagePath: "/carousel/vix_3_r.png", 
         imageClass: styles.landscape
       },
     ]

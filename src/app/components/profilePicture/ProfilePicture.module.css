@@ -1,8 +1,8 @@
 .wrapper {
   position: relative;
   margin: 2.5rem;
-  width: 130px;
-  height: 130px;
+  width: 210px;
+  height: 210px;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -10,9 +10,10 @@
 .front {
   position: absolute;
   left: -0px;
-  top:25px;
+  top:40px;
   transform: scale(1.6);
-  
+  width: 160px;
+  height: 130px;
 }
 
 .back {
