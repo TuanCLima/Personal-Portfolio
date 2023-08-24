@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef} from "react";
 import CarouselItem from "../carouselItem/CarouselItem";
 import experienceData from "@/app/data/experienceData";
 import carouselItemStyles from "../carouselItem/CarouselItem.module.css";
+import ImageWithModal from "./ImageWithModal";
 
 /* Move this to "experienceData.js" */
 const jobData = {
@@ -28,7 +29,7 @@ const jobData = {
   },
   vix: {
     title: "Vix",
-    desc: "I worked at VIX as a React frontend developer, helping build from scratch the streaming platform available at <a href='https://vix.com'>vix.com</a>. I worked on a subteam specialized on the video subrepo, where I concerned myself with features like player wrapping, dependency injection, and various player functionalities like play/pause, seek, full screen, close captioning, casting, analytics, advertising. <br/> <br/> Broadly, I've also helped to implement their subscription flow, as well as VIX's authentication and authorization processes.",
+    desc: "At VIX, I worked as a React frontend developer, helping build from scratch the streaming platform available at <a href='https://vix.com'>vix.com</a>. I worked on a subteam specialized on the video subrepo, where I concerned myself with features like player wrapping, dependency injection, and various player functionalities like play/pause, seek, full screen, close captioning, casting, analytics, advertising. <br/> <br/> Broadly, I've also helped to implement their subscription flow, as well as VIX's authentication and authorization processes.",
     labels: ["React", "Typescript", "Next.js", "Styled Comp.", "Jest", "GraphQL"],
     images: [
       {
@@ -47,7 +48,7 @@ const jobData = {
   },
   granito: {
     title: "Granito",
-    desc: "At Granito, a Brazilian startup of the financial sector, I worked as a mobile frontend developer, building along with two other devs the app available <a target='_blank' href='https://rb.gy/colsux'>here</a>. Within an agile based mindset and with the help of a design team, we built from scratch features like a transactions summary screen, login screen, transactions operations like division, transference and request of receipt, and other features like tap-on-phone (a very modern feature allowing the usage of a cellphone as a credit card).",
+    desc: "At Granito, a Brazilian startup of the financial sector, I worked as a mobile frontend developer, building along with two other devs the app available <a target='_blank' href='https://rb.gy/colsux'>here</a>. With an agile based mindset and the help of a design team, we built from scratch features like a transactions summary screen, login screen, transactions operations like division, transference and request of receipt, and other features like tap-on-phone (a very modern feature allowing the usage of a cellphone as a credit card).",
     labels: ["Dart", "Flutter", "MobX"],
     images: [
       {
@@ -338,7 +339,7 @@ function Experience() {
                 {jobData[expandedId] && jobData[expandedId].images.map((image, index) => {
                   return (
                     <div className={styles.imageBackground} key={index}>
-                      <Image className={`${image.imageClass} ${index !== 0 ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="Brackground Image"></Image>
+                      <ImageWithModal image={image} isNotOpaque={currentIndex === index} />
                     </div>
                   );
                 })}

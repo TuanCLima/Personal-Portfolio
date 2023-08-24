@@ -142,11 +142,6 @@
   height: 100%;
 }
 
-.opaque {
-  opacity: 0.4;
-  transition: opacity 0.1s ease-in;
-}
-
 .landscape {
   height: 400px;
   width: 700px;
