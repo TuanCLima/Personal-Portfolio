@@ -10,6 +10,7 @@
     top: 50%;
     position: absolute;
     outline: none;
+    border: none;
 }
 
 .modalChild {
@@ -38,7 +39,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90vw;
-    height: 90vh;   
+    height: 90vh;
+    outline: none;
+    border: none;
 }
 
 .closeBtn {
