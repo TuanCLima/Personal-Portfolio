@@ -9,6 +9,7 @@
     height: 100%;
     top: 50%;
     position: absolute;
+    outline: none;
 }
 
 .modalChild {
@@ -21,11 +22,13 @@
     border: 2px solid white;
     border-radius: 5px;
     z-index: 0;
+}
 
-    @media (max-width: 660px) {
+@media (max-width: 660px) {
+    .modalChild {
         width: calc(170vw);
         height: 90vw;
-        transform: translate(-50%, -50%) rotate(-90deg);
+        transform: translate(-50%, -50%) rotate(-90deg) ;
     }
 }
 
