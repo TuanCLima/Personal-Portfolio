@@ -10,19 +10,22 @@ import ImageWithModal from "./ImageWithModal";
 const jobData = {
   aeon: {
     title: "Aeon Research",
-    desc: "At Aeon Research, an AI French startup, I worked as a cross-platform (web and macOS) frontend developer. As a senior dev and temporarily tech lead of the fronend project, I helped develop a very modular, secure and clean architecture based app. Features implemented were a service that allowed the generation of ChatGPT-like texts for journalists based on user fed text prompts and a page that allowed the generation and smart edition of video based on text prompts.",
+    desc: "At Aeon Research, an AI French startup, I worked as a cross-platform (web and macOS) frontend developer. As a senior dev and temporarily tech lead of the frontend project, I helped develop a very modular, secure and clean architecture based app. Features implemented were a service that allowed the generation of ChatGPT-like texts for journalists based on user fed text prompts and a page that allowed the generation and smart edition of video based on text prompts.",
     labels: ["Dart", "Flutter", "Firebase", "Riverpod", "FFmpeg"],
     images: [
       {
-        imagePath: "/carousel/tellers_dashboard.png", 
+        imagePath: "/carousel/squoosh//tellers_dashboard.jpeg",
+        imagePathSm: "/carousel/squoosh/tellers_dashboard.jpeg", 
         imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/tellers_video_generation.png", 
+        imagePath: "/carousel/squoosh/tellers_video_generation.jpeg", 
+        imagePathSm: "/carousel/squoosh/tellers_video_generation.jpeg", 
         imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/tellers_article_generation.png", 
+        imagePath: "/carousel/squoosh/tellers_article_generation.jpeg", 
+        imagePathSm: "/carousel/squoosh/tellers_article_generation.jpeg", 
         imageClass: styles.landscape
       },
     ]
@@ -33,15 +36,18 @@ const jobData = {
     labels: ["React", "Typescript", "Next.js", "Styled Comp.", "Jest", "GraphQL"],
     images: [
       {
-        imagePath: "/carousel/vix_1_r.png", 
+        imagePath: "/carousel/squoosh/vix_1_2560.jpeg", 
+        imagePathSm: "/carousel/squoosh/vix_1_1920.jpeg", 
         imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/vix_2_r.png", 
+        imagePath: "/carousel/squoosh/vix_2_2560.jpeg", 
+        imagePathSm: "/carousel/squoosh/vix_2_1920.jpeg", 
         imageClass: styles.landscape
       },
       {
-        imagePath: "/carousel/vix_3_r.png", 
+        imagePath: "/carousel/squoosh/vix_3_2560.jpeg", 
+        imagePathSm: "/carousel/squoosh/vix_3_1920.jpeg", 
         imageClass: styles.landscape
       },
     ]
@@ -53,22 +59,27 @@ const jobData = {
     images: [
       {
         imagePath: "/carousel/granito_1.png", 
+        imagePathSm: "/carousel/granito_1_r.png", 
         imageClass: styles.portrait
       },
       {
         imagePath: "/carousel/granito_2.png",
+        imagePathSm: "/carousel/granito_2_r.png",
         imageClass: styles.portrait
       },
       {
         imagePath: "/carousel/granito_3.png", 
+        imagePathSm: "/carousel/granito_3_r.png", 
         imageClass: styles.portrait
       },
       {
         imagePath: "/carousel/granito_4.png", 
+        imagePathSm: "/carousel/granito_4_r.png", 
         imageClass: styles.portrait
       },
       {
         imagePath: "/carousel/granito_5.png", 
+        imagePathSm: "/carousel/granito_5_r.png", 
         imageClass: styles.portrait
       }
     ]

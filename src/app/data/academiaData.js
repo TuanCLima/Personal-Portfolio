@@ -1,7 +1,7 @@
 
 const academiaData = [
     { id: "saclay", 
-      img: { src: '/logo_paris_saclay.jpeg', width: 1000, height: 1000, alt: "Paris Saclay Logo" },
+      img: { src: '/logo_paris_saclay_r.png', width: 1000, height: 1000, alt: "Paris Saclay Logo" },
       description: "At Paris-Saclay, I got my Master's degree studying things like information theory, data encoding, data transport, and programming.",
       date: "Aug 2016 - Aug 2017",
     },

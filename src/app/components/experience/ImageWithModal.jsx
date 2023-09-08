@@ -18,7 +18,7 @@ function ImageWithModal ({ image, isNotOpaque }) {
 
     return (
         <>
-            <Image onClick={handleOpen} className={`${image.imageClass} ${!isNotOpaque ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="Brackground Image"></Image>
+            <img onClick={handleOpen} className={`${image.imageClass} ${!isNotOpaque ? styles.opaque : styles.notOpaque}`} src={image.imagePathSm} width={1000} height={1000} alt="Brackground Image"></img>
             <Modal
                 className={styles.modal}
                 open={open}
@@ -28,7 +28,8 @@ function ImageWithModal ({ image, isNotOpaque }) {
             >
                 <div className={`${styles.modalContainer} ${(image.imageClass === stylesExp.portrait ? styles.portraitWidth : '')}`}>
                     <div onClick={() => setIsOpen(false)} className={styles.closeBtn}>X</div>
-                    <Image className={`${image.imageClass} ${styles.modalChild} ${(image.imageClass === stylesExp.portrait ? styles.portraitWidth : '')}  ${!isNotOpaque ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="Brackground Image"></Image>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className={`${image.imageClass} ${styles.modalChild} ${(image.imageClass === stylesExp.portrait ? styles.portraitWidth : '')}  ${!isNotOpaque ? styles.opaque : ""}`} src={image.imagePath} width={1000} height={1000} alt="Brackground Image"></img>
                 </div>
             </Modal>
         </>
