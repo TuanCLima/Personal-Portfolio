@@ -58,28 +58,28 @@ const jobData = {
     labels: ["Dart", "Flutter", "MobX"],
     images: [
       {
-        imagePath: "/carousel/granito_1.png", 
-        imagePathSm: "/carousel/granito_1_r.png", 
+        imagePath: "/carousel/squoosh/granito_1.jpeg", 
+        imagePathSm: "/carousel/squoosh/granito_1.jpeg", 
         imageClass: styles.portrait
       },
       {
-        imagePath: "/carousel/granito_2.png",
-        imagePathSm: "/carousel/granito_2_r.png",
+        imagePath: "/carousel/squoosh/granito_2.jpeg",
+        imagePathSm: "/carousel/squoosh/granito_2.jpeg",
         imageClass: styles.portrait
       },
       {
-        imagePath: "/carousel/granito_3.png", 
-        imagePathSm: "/carousel/granito_3_r.png", 
+        imagePath: "/carousel/squoosh/granito_3.jpeg", 
+        imagePathSm: "/carousel/squoosh/granito_3.jpeg", 
         imageClass: styles.portrait
       },
       {
-        imagePath: "/carousel/granito_4.png", 
-        imagePathSm: "/carousel/granito_4_r.png", 
+        imagePath: "/carousel/squoosh/granito_4.jpeg", 
+        imagePathSm: "/carousel/squoosh/granito_4.jpeg", 
         imageClass: styles.portrait
       },
       {
-        imagePath: "/carousel/granito_5.png", 
-        imagePathSm: "/carousel/granito_5_r.png", 
+        imagePath: "/carousel/squoosh/granito_5.jpeg", 
+        imagePathSm: "/carousel/squoosh/granito_5.jpeg", 
         imageClass: styles.portrait
       }
     ]
